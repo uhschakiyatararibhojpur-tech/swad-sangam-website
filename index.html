@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6f1726">
+  <meta name="description" content="Order delicious food from Swad Sangam. Fresh meals, easy online ordering and takeaway.">
+  <title>Swad Sangam | Taste that brings us together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <div class="topline">Freshly prepared • Made with care • Serving Bihar</div>
+  <header class="site-header">
+    <a class="brand" href="#"><span class="brand-mark">SS</span><span><strong>Swad Sangam</strong><small>TASTE THAT BRINGS US TOGETHER</small></span></a>
+    <nav><a href="#menu">Menu</a><a href="#story">Our Story</a><a href="#contact">Contact</a></nav>
+    <button class="cart-button" id="open-cart" aria-label="Open shopping cart">Cart <span id="cart-count">0</span></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">GOOD FOOD. GOOD MOOD.</p>
+        <h1>A little taste of<br><em>happiness.</em></h1>
+        <p class="hero-sub">Your favourites, freshly prepared and delivered with care. Bring everyone to the table with Swad Sangam.</p>
+        <a class="button button-gold" href="#menu">Explore our menu <span>→</span></a>
+        <div class="hero-note"><span class="note-stars">★★★★★</span><span>Made fresh when you order</span></div>
+      </div>
+      <div class="hero-image-wrap">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=85" alt="Freshly prepared meal" onerror="this.style.display='none'">
+        <div class="image-stamp"><strong>Fresh</strong><span>Every single day</span></div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div><span class="benefit-icon">✦</span><span><b>Freshly made</b><small>Prepared to order</small></span></div>
+      <div><span class="benefit-icon">♡</span><span><b>Made with care</b><small>Quality ingredients</small></span></div>
+      <div><span class="benefit-icon">⌂</span><span><b>Easy ordering</b><small>Pickup or delivery</small></span></div>
+    </section>
+
+    <section class="menu-section section-wrap" id="menu">
+      <div class="section-heading"><div><p class="eyebrow">FROM OUR KITCHEN</p><h2>Explore the menu</h2></div><p>Find your next favourite.<br>Prepared fresh, just for you.</p></div>
+      <div id="category-list" class="category-list"><button class="category-chip active" data-category="all">All items</button></div>
+      <div id="menu-grid" class="menu-grid"><div class="loading">Loading the menu…</div></div>
+      <p id="menu-message" class="muted center"></p>
+    </section>
+
+    <section class="story-section" id="story">
+      <div class="story-photo"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=80" alt="Food prepared with care" loading="lazy"></div>
+      <div class="story-copy"><p class="eyebrow">A SEAT AT OUR TABLE</p><h2>Good food is<br><em>meant to be shared.</em></h2><p>At Swad Sangam, every meal is an invitation to slow down, share a little more and enjoy the flavours you love. We cook with care so every order feels special.</p><a href="#menu" class="text-link">Find your favourite <span>→</span></a></div>
+    </section>
+
+    <section class="contact-section section-wrap" id="contact">
+      <div><p class="eyebrow">WE'RE HERE FOR YOU</p><h2>Ready when you are.</h2><p>Order online for delivery or pickup. For special requests, contact the restaurant directly.</p></div>
+      <div class="contact-card"><b>Swad Sangam</b><span id="restaurant-location">Bihar, India</span><span id="restaurant-hours">Opening hours to be confirmed</span><span id="restaurant-phone">Add restaurant phone in configuration</span></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">SS</span><span><strong>Swad Sangam</strong><small>TASTE THAT BRINGS US TOGETHER</small></span></a><span>© <span id="year"></span> Swad Sangam. All rights reserved.</span><a href="admin.html">Owner login</a></footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Your cart" aria-hidden="true">
+    <div class="drawer-heading"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your cart</h2></div><button id="close-cart" class="icon-button" aria-label="Close cart">×</button></div>
+    <div id="cart-items" class="cart-items"></div>
+    <div id="cart-summary" class="cart-summary"></div>
+    <button id="checkout-button" class="button button-primary full-width" disabled>Continue to checkout</button>
+    <p class="tiny muted">Final availability and prices are confirmed by the server when you place your order.</p>
+  </aside>
+
+  <div class="modal-backdrop" id="checkout-backdrop">
+    <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+      <div class="drawer-heading"><div><p class="eyebrow">ALMOST THERE</p><h2 id="checkout-title">Checkout</h2></div><button id="close-checkout" class="icon-button" aria-label="Close checkout">×</button></div>
+      <form id="checkout-form">
+        <label>Full name<input name="customer_name" autocomplete="name" required maxlength="100" placeholder="Your name"></label>
+        <label>Mobile number<input name="phone" autocomplete="tel" required inputmode="tel" pattern="[0-9+ ()-]{8,20}" placeholder="10-digit mobile number"></label>
+        <label>Order type<select name="fulfillment" id="fulfillment"><option value="delivery">Delivery</option><option value="pickup">Pickup from restaurant</option></select></label>
+        <label id="address-label">Delivery address<textarea name="address" id="address" rows="3" maxlength="500" placeholder="House, street, landmark, area"></textarea></label>
+        <label>Instructions (optional)<textarea name="notes" rows="2" maxlength="500" placeholder="Less spicy, call on arrival…"></textarea></label>
+        <div class="payment-choice"><span class="field-title">Payment method</span><label class="radio-line"><input type="radio" name="payment_method" value="cod" checked> Cash on delivery / pay at pickup</label><label class="radio-line"><input type="radio" name="payment_method" value="online"> Pay online (Razorpay)</label></div>
+        <div id="checkout-total" class="checkout-total"></div>
+        <p id="checkout-error" class="error-message" role="alert"></p>
+        <button id="place-order" class="button button-primary full-width" type="submit">Place order</button>
+        <p class="tiny muted">By placing an order, you confirm the details above are correct.</p>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
