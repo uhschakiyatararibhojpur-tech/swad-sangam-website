@@ -26,7 +26,42 @@
     const filter=$("#order-filter").value;const list=(data||[]).filter(o=>filter==="all"||o.status===filter);
     $("#orders-list").innerHTML=list.length?list.map(o=>`<article class="order-card"><div class="order-card-top"><div><span class="order-number-label">${safe(o.order_number)}</span><h3>${safe(o.customer_name)}</h3><span class="muted">${new Date(o.created_at).toLocaleString("en-IN")}</span></div><div class="order-total">${money(o.total_amount)}<span class="status-pill status-${safe(o.status)}">${safe(o.status)}</span></div></div><div class="order-details"><p><b>Phone:</b> ${safe(o.phone)} ${o.phone?`<a href="tel:${safe(o.phone)}">Call</a>`:""}</p><p><b>Type:</b> ${safe(o.fulfillment)} · <b>Payment:</b> ${safe(o.payment_method)} (${safe(o.payment_status)})</p><p><b>Address:</b> ${safe(o.address||"Pickup")}</p>${o.notes?`<p><b>Notes:</b> ${safe(o.notes)}</p>`:""}<ul>${(o.order_items||[]).map(i=>`<li>${safe(i.item_name)} × ${i.quantity} — ${money(i.line_total)}</li>`).join("")}</ul><p>Subtotal ${money(o.subtotal)} · Delivery ${money(o.delivery_fee)}</p></div><div class="order-actions"><label>Update status<select data-status="${safe(o.id)}">${statuses.map(s=>`<option value="${s}" ${s===o.status?"selected":""}>${s[0].toUpperCase()+s.slice(1)}</option>`).join("")}</select></label><button class="button button-outline" data-whatsapp="${safe(o.id)}" data-phone="${safe(o.phone)}" data-message="${safe(`Hello ${o.customer_name}, update from Swad Sangam: your order ${o.order_number} is ${o.status}.`)}">WhatsApp customer</button></div></article>`).join(""):'<div class="empty-cart"><h3>No orders found</h3><p>New orders will appear here.</p></div>';
   }
-  $("#refresh-orders").addEventListener("click",loadOrders);$("#order-filter").addEventListener("change",loadOrders);
+  
+  $("#refresh-orders").addEventListener("click", loadOrders);
+  $("#order-filter").addEventListener("change", loadOrders);
+
+  // Automatically refresh orders every 15 seconds
+  let ordersRefreshTimer = null;
+
+  function startOrdersAutoRefresh() {
+    if (ordersRefreshTimer) return;
+
+    ordersRefreshTimer = setInterval(() => {
+      if (
+        !$("#dashboard").hidden &&
+        !$("#orders-tab").hidden &&
+        !document.hidden
+      ) {
+        loadOrders();
+      }
+    }, 15000);
+  }
+
+  function stopOrdersAutoRefresh() {
+    if (ordersRefreshTimer) {
+      clearInterval(ordersRefreshTimer);
+      ordersRefreshTimer = null;
+    }
+  }
+
+  startOrdersAutoRefresh();
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && !$("#dashboard").hidden && !$("#orders-tab").hidden) {
+      loadOrders();
+    }
+  });
+
   $("#orders-list").addEventListener("change",async e=>{const sel=e.target.closest("[data-status]");if(!sel)return;const {error}=await db.from("orders").update({status:sel.value}).eq("id",sel.dataset.status);if(error){toast("Could not update status.");loadOrders();}else toast("Order status updated.");});
   $("#orders-list").addEventListener("click",e=>{const b=e.target.closest("[data-whatsapp]");if(!b)return;const p=b.dataset.phone.replace(/\D/g,"");if(p.length<8){toast("Customer phone number is invalid.");return;}window.open(`https://wa.me/${p}?text=${encodeURIComponent(b.dataset.message)}`,"_blank","noopener");});
   async function loadMenu(){
