@@ -17,7 +17,12 @@
     if(error||!data){await db.auth.signOut();$("#login-error").textContent="This account is not authorized as a restaurant owner.";$("#login-panel").hidden=false;$("#dashboard").hidden=true;return false;}
     $("#login-panel").hidden=true;$("#dashboard").hidden=false;return true;
   }
-  $("#login-form").addEventListener("submit",async e=>{e.preventDefault();const f=new FormData(e.currentTarget);$("#login-error").textContent="";const {error}=await db.auth.signInWithPassword({email:f.get("email"),password:f.get("password")});if(error){$("#login-error").textContent="Sign-in failed. Check your email and password.";return;}if(await requireAdmin()){await loadOrders();await loadMenu();await loadSettings();}});
+  $("#login-form").addEventListener("submit",async e=>{e.preventDefault();const f=new FormData(e.currentTarget);$("#login-error").textContent="";const {error}=await db.auth.signInWithPassword({email:f.get("email"),password:f.get("password")});if(error){$("#login-error").textContent="Sign-in failed. Check your email and password.";return;}if (await requireAdmin()) {
+  await loadOrders();
+  await loadMenu();
+  await loadSettings();
+  startOrdersAutoRefresh();
+}});
   $("#logout-button").addEventListener("click",async()=>{await db.auth.signOut();await requireAdmin();});
   async function loadOrders(){
     $("#orders-list").innerHTML='<p class="loading">Loading orders…</p>';
@@ -30,21 +35,33 @@
   $("#refresh-orders").addEventListener("click", loadOrders);
   $("#order-filter").addEventListener("change", loadOrders);
 
-  // Automatically refresh orders every 15 seconds
+ 
+  // Automatically refresh orders every 15 seconds after login
   let ordersRefreshTimer = null;
+  let ordersLoading = false;
+
+  async function autoRefreshOrders() {
+    if (
+      ordersLoading ||
+      document.hidden ||
+      $("#dashboard").hidden ||
+      $("#orders-tab").hidden
+    ) {
+      return;
+    }
+
+    ordersLoading = true;
+    try {
+      await loadOrders();
+    } finally {
+      ordersLoading = false;
+    }
+  }
 
   function startOrdersAutoRefresh() {
     if (ordersRefreshTimer) return;
 
-    ordersRefreshTimer = setInterval(() => {
-      if (
-        !$("#dashboard").hidden &&
-        !$("#orders-tab").hidden &&
-        !document.hidden
-      ) {
-        loadOrders();
-      }
-    }, 15000);
+    ordersRefreshTimer = setInterval(autoRefreshOrders, 15000);
   }
 
   function stopOrdersAutoRefresh() {
@@ -54,12 +71,8 @@
     }
   }
 
-  startOrdersAutoRefresh();
-
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && !$("#dashboard").hidden && !$("#orders-tab").hidden) {
-      loadOrders();
-    }
+    if (!document.hidden) autoRefreshOrders();
   });
 
   $("#orders-list").addEventListener("change",async e=>{const sel=e.target.closest("[data-status]");if(!sel)return;const {error}=await db.from("orders").update({status:sel.value}).eq("id",sel.dataset.status);if(error){toast("Could not update status.");loadOrders();}else toast("Order status updated.");});
@@ -91,5 +104,12 @@
   });
   document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".admin-tab").forEach(x=>x.hidden=x.id!==`${b.dataset.tab}-tab`);}));
   db.auth.onAuthStateChange((_event,session)=>{if(!session){$("#login-panel").hidden=false;$("#dashboard").hidden=true;}});
-  requireAdmin().then(ok=>{if(ok){loadOrders();loadMenu();loadSettings();}});
+  requireAdmin().then(async ok => {
+  if (ok) {
+    await loadOrders();
+    await loadMenu();
+    await loadSettings();
+    startOrdersAutoRefresh();
+  }
+});
 })();
