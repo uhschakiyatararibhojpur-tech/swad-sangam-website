@@ -81,7 +81,15 @@
         <label>Order type<select name="fulfillment" id="fulfillment"><option value="delivery">Delivery</option><option value="pickup">Pickup from restaurant</option></select></label>
         <label id="address-label">Delivery address<textarea name="address" id="address" rows="3" maxlength="500" placeholder="House, street, landmark, area"></textarea></label>
         <label>Instructions (optional)<textarea name="notes" rows="2" maxlength="500" placeholder="Less spicy, call on arrival…"></textarea></label>
-        <div class="payment-choice"><span class="field-title">Payment method</span><label class="radio-line"><input type="radio" name="payment_method" value="cod" checked> Cash on delivery / pay at pickup</label><label class="radio-line"><input type="radio" name="payment_method" value="online"> Pay online (Razorpay)</label></div>
+        
+<div class="payment-choice">
+  <span class="field-title">Payment method</span>
+  <label class="radio-line">
+    <input type="radio" name="payment_method" value="cod" checked>
+    Cash on Delivery / Pay at Pickup
+  </label>
+</div>
+
         <div id="checkout-total" class="checkout-total"></div>
         <p id="checkout-error" class="error-message" role="alert"></p>
         <button id="place-order" class="button button-primary full-width" type="submit">Place order</button>
