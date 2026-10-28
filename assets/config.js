@@ -5,6 +5,5 @@ window.SWAD_CONFIG = {
   SUPABASE_ANON_KEY: "sb_publishable_P0p5ZRblk1ALiz3jBB2lyA_zG7vwcPf",
   RESTAURANT_WHATSAPP: "91XXXXXXXXXX",
   RESTAURANT_NAME: "Swad Sangam",
-  DEFAULT_LOCATION: "Bihar, India",
-  RAZORPAY_KEY_ID: "rzp_test_REPLACE_WITH_KEY_ID"
+  DEFAULT_LOCATION: "Bihar, India"
 };
