@@ -79,3 +79,124 @@
     font-size: 10px;
   }
 }
+
+/* ===== SWAD SANGAM PREMIUM ANIMATIONS ===== */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero text entrance */
+.hero-copy {
+  animation: heroTextIn 1s ease-out both;
+}
+
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Floating food image */
+.hero-image-wrap {
+  animation: heroImageIn 1s ease-out both,
+             foodFloat 5s ease-in-out 1s infinite;
+}
+
+@keyframes heroImageIn {
+  from {
+    opacity: 0;
+    transform: translateX(35px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes foodFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+/* Gold shine on the main button */
+.button-gold {
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.button-gold:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(173, 115, 35, .3);
+}
+
+/* Animated logo */
+.site-header .brand-mark {
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.site-header .brand:hover .brand-mark {
+  transform: rotate(-8deg) scale(1.08);
+  box-shadow: 0 0 18px rgba(213, 173, 96, .5);
+}
+
+/* Navigation hover effect */
+.site-header nav a {
+  position: relative;
+  transition: color .25s ease;
+}
+
+.site-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -6px;
+  height: 2px;
+  background: #c99743;
+  transition: right .25s ease;
+}
+
+.site-header nav a:hover {
+  color: #8b1829;
+}
+
+.site-header nav a:hover::after {
+  right: 0;
+}
+
+/* Premium product card hover */
+.menu-grid > * {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.menu-grid > *:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 14px 30px rgba(72, 20, 25, .12);
+}
+
+/* Gentle entrance for benefit items */
+.benefits > div {
+  transition: transform .3s ease;
+}
+
+.benefits > div:hover {
+  transform: translateY(-4px);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
