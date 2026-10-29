@@ -1125,3 +1125,39 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* FIX: KEEP RESTAURANT NAME DARK AND READABLE */
+.site-header .brand strong {
+  color: #701426 !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-text-fill-color: #701426 !important;
+  -webkit-background-clip: border-box !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .6);
+  font-family: "Hind", sans-serif;
+  font-weight: 700;
+}
+
+/* Keep the tagline clearly visible */
+.site-header .brand small {
+  color: #956522 !important;
+  -webkit-text-fill-color: #956522 !important;
+  font-family: "Hind", sans-serif;
+  font-weight: 600;
+}
+
+/* Preserve the gold animation on the hero heading only */
+.hero-copy h1 em {
+  background: linear-gradient(
+    90deg,
+    #a56b1d,
+    #e6b950,
+    #b57925,
+    #a56b1d
+  ) !important;
+  background-size: 250% auto !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: ssGoldText 5s linear infinite;
+}
