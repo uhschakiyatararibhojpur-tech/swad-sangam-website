@@ -923,3 +923,205 @@ body {
     animation: none !important;
   }
 }
+
+/* =====================================
+   SWAD SANGAM — EYE-CATCHING COLOUR FX
+   ===================================== */
+
+:root {
+  --wine: #701426;
+  --gold: #e4ad45;
+  --saffron: #ff8a24;
+  --cream: #fff6e7;
+}
+
+/* Animated premium background */
+.hero {
+  background: linear-gradient(
+    125deg,
+    #fff8ed,
+    #fff0d5,
+    #fffaf2,
+    #f9e5d7,
+    #fff8ed
+  );
+  background-size: 300% 300%;
+  animation: ssBackgroundFlow 12s ease infinite;
+}
+
+/* Eye-catching Hindi restaurant name */
+.site-header .brand strong {
+  background: linear-gradient(
+    90deg,
+    #701426,
+    #c23b32,
+    #d59a32,
+    #701426
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ssNameColour 5s ease-in-out infinite;
+}
+
+/* Warm gold glow around logo */
+.site-header .brand-mark {
+  animation: ssLogoGlow 3s ease-in-out infinite;
+}
+
+/* Animated hero heading */
+.hero-copy h1 {
+  animation: ssHeadingEnter 1s ease-out both;
+}
+
+.hero-copy h1 em {
+  background: linear-gradient(
+    90deg,
+    #a76817,
+    #f5c45d,
+    #c27c1c,
+    #ffdc83,
+    #a76817
+  );
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ssGoldText 5s linear infinite;
+}
+
+/* Golden shine across the main button */
+.button-gold {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 8px 26px rgba(174, 108, 27, .25);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.button-gold::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -50%;
+  bottom: -50%;
+  left: -80%;
+  width: 55%;
+  transform: rotate(20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, .8),
+    transparent
+  );
+  animation: ssButtonGlint 3.5s ease-in-out infinite;
+}
+
+.button-gold:hover {
+  transform: translateY(-4px) scale(1.025);
+  box-shadow: 0 14px 34px rgba(174, 108, 27, .4);
+}
+
+/* Moving golden border around food image */
+.hero-image-wrap {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-image-wrap::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: -3px;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  background: linear-gradient(
+    135deg,
+    #f5d48b,
+    transparent 35%,
+    #b77b29 65%,
+    #ffe8a9
+  ) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: ssBorderGlow 5s linear infinite;
+}
+
+/* Product cards: warm premium hover */
+.menu-grid > * {
+  transition: transform .35s ease, box-shadow .35s ease,
+              border-color .35s ease;
+}
+
+.menu-grid > *:hover {
+  transform: translateY(-8px);
+  border-color: #d7a74d;
+  box-shadow: 0 18px 38px rgba(112, 20, 38, .16);
+}
+
+/* Colour animations */
+@keyframes ssBackgroundFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes ssNameColour {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+@keyframes ssLogoGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(228, 173, 69, .12),
+                0 5px 18px rgba(112, 20, 38, .18);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(228, 173, 69, .2),
+                0 0 28px rgba(228, 173, 69, .45);
+  }
+}
+
+@keyframes ssHeadingEnter {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ssGoldText {
+  to { background-position: 300% center; }
+}
+
+@keyframes ssButtonGlint {
+  0%, 65% { left: -80%; }
+  100% { left: 140%; }
+}
+
+@keyframes ssBorderGlow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(35deg); }
+}
+
+/* Mobile and accessibility support */
+@media (max-width: 600px) {
+  .hero {
+    background-size: 200% 200%;
+  }
+
+  .menu-grid > *:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
