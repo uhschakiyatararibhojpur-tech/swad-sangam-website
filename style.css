@@ -4,3 +4,78 @@
 .admin-body{background:#f7f1e9;min-height:100vh}.admin-header{position:static}.admin-main{max-width:1120px;margin:auto;padding:45px 22px 80px}.admin-main h1{font-size:clamp(35px,5vw,54px)}.login-panel{max-width:430px;margin:25px auto;background:white;border:1px solid var(--line);border-radius:10px;padding:32px;box-shadow:var(--shadow)}.login-panel h1{font-size:40px}.login-panel>p:not(.eyebrow){font-size:13px;line-height:1.8}.admin-title-row{display:flex;justify-content:space-between;align-items:center;gap:20px}.admin-title-row .eyebrow{margin-bottom:8px}.admin-title-row .muted{margin:7px 0 0}.admin-tabs{display:flex;gap:8px;border-bottom:1px solid #dfd0c0;margin:30px 0 25px;overflow:auto}.tab-button{background:transparent;border:0;border-bottom:3px solid transparent;padding:13px 16px;color:var(--muted);font-weight:700;white-space:nowrap}.tab-button.active{color:var(--wine);border-bottom-color:var(--wine)}.admin-section-heading{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}.admin-section-heading h2,.editor-card h2{font:700 26px "Playfair Display",serif;color:var(--wine);margin:0}.admin-section-heading p{font-size:12px;margin:5px 0 0}.filter-row{max-width:230px;margin-bottom:15px}.orders-list{display:grid;gap:15px}.order-card,.editor-card{background:white;border:1px solid var(--line);border-radius:8px;padding:20px}.order-card-top{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #f0e7de;padding-bottom:13px}.order-number-label{font-size:10px;letter-spacing:.12em;color:#a46c37;font-weight:700}.order-card h3{font:700 20px "Playfair Display",serif;color:var(--wine);margin:3px 0}.order-card .muted{font-size:10px}.order-total{display:grid;justify-items:end;gap:7px;font-size:17px;font-weight:700}.status-pill{font-size:10px;font-weight:700;padding:4px 8px;border-radius:20px;background:#f4e9d9;color:#795121}.status-delivered{background:#e2f4e9;color:#17643c}.status-cancelled{background:#fae4e2;color:#a12c22}.status-preparing{background:#e4edff;color:#244e9b}.order-details{font-size:12px;color:#62574f;padding:9px 0}.order-details p{margin:7px 0}.order-details ul{margin:8px 0;padding-left:20px}.order-details a{color:var(--wine);font-weight:700;margin-left:8px}.order-actions{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid #f0e7de;padding-top:13px}.order-actions label{min-width:180px;margin:0}.order-actions select{padding:9px}.menu-admin-list{display:grid;gap:10px;margin-bottom:20px}.menu-admin-row{display:flex;justify-content:space-between;align-items:center;gap:15px;background:white;border:1px solid var(--line);border-radius:7px;padding:13px 16px}.menu-admin-row>div:first-child{display:grid;gap:4px}.menu-admin-row span{font-size:11px;color:var(--muted)}.button-row{display:flex;gap:8px;flex-wrap:wrap}.button-row .button{padding:9px 12px;font-size:11px}.editor-card{margin:18px 0}.editor-card h3{font:700 22px "Playfair Display",serif;color:var(--wine);margin:0 0 10px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.admin-tab .muted{font-size:12px}
 @media(max-width:800px){.site-header{height:72px;padding:0 17px}.site-header nav{gap:15px}.site-header nav a{font-size:11px}.brand-mark{width:38px;height:38px}.brand strong{font-size:17px}.brand small{font-size:7px}.hero{padding-top:42px;padding-bottom:50px;gap:24px}.hero-image{height:350px}.image-stamp{width:90px;height:90px;left:-15px}.image-stamp strong{font-size:19px}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.food-image-wrap{height:180px}.section-wrap{padding-top:60px;padding-bottom:60px}.benefits{gap:25px}.story-copy{padding:35px}.contact-section{align-items:flex-start}.contact-card{min-width:210px}}
 @media(max-width:560px){body{font-size:14px}.topline{font-size:9px}.site-header{gap:8px}.site-header nav{display:none}.brand{gap:7px}.brand strong{font-size:16px}.cart-button{padding:8px 11px;font-size:11px}.hero{grid-template-columns:1fr;padding:37px 22px 45px}.hero h1{font-size:49px}.hero-sub{font-size:13px;margin:17px 0 22px}.hero-image{height:300px;border-radius:45% 45% 5px 5px}.hero-image-wrap{margin:0 8px 0 25px}.image-stamp{left:-24px;bottom:12px}.benefits{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:20px}.benefits>div:last-child{grid-column:1/-1}.benefit-icon{font-size:23px}.section-wrap{padding:50px 18px}.section-heading{display:block}.section-heading h2{font-size:37px}.section-heading>p{margin-top:13px}.category-list{margin-right:-18px}.menu-grid{grid-template-columns:1fr 1fr;gap:10px}.food-image-wrap{height:135px}.food-card-copy{padding:11px}.food-card h3{font-size:15px}.food-card-title{display:block}.food-card-title>b{display:block;font-size:13px;margin-top:5px}.food-card-copy>p{font-size:11px;min-height:50px;margin:8px 0 11px}.add-button{padding:9px;font-size:11px}.story-section{grid-template-columns:1fr}.story-photo,.story-photo img{min-height:230px;height:230px}.story-copy{padding:35px 22px 42px}.story-copy h2{font-size:38px}.contact-section{display:block}.contact-card{margin-top:25px}.contact-section h2{font-size:37px}footer{flex-wrap:wrap;padding:23px 18px}footer>span{order:3;width:100%}.checkout-modal{padding:19px}.drawer-heading h2{font-size:25px}.admin-main{padding:25px 13px 55px}.admin-header .text-link{font-size:11px}.login-panel{padding:23px}.admin-title-row{align-items:flex-start}.admin-title-row .button{padding:10px}.admin-section-heading{align-items:flex-start}.order-card,.editor-card{padding:14px}.order-card-top{gap:8px}.order-card h3{font-size:18px}.order-total{font-size:14px}.menu-admin-row{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.order-actions{align-items:stretch}.order-actions label{width:100%}.order-actions .button{flex:1}.admin-tabs{margin:22px 0 18px}.tab-button{padding:12px 11px;font-size:12px}}
+
+/* PREMIUM SWAD SANGAM BRANDING */
+.site-header .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  flex-shrink: 0;
+  max-width: 100%;
+}
+
+.site-header .brand-mark {
+  width: 66px;
+  height: 66px;
+  min-width: 66px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #8b1829, #4d0712);
+  color: #fff2c7;
+  border: 3px solid #d7aa54;
+  font-size: 23px;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(80, 10, 20, 0.22);
+}
+
+.site-header .brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.site-header .brand strong {
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(23px, 2.2vw, 34px);
+  line-height: 1.45;
+  font-weight: 900;
+  letter-spacing: 0;
+  color: #711426;
+  white-space: nowrap;
+}
+
+.site-header .brand small {
+  font-family: "Noto Sans Devanagari", sans-serif;
+  font-size: clamp(11px, 1vw, 14px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: #916522;
+}
+
+/* MOBILE RESPONSIVE BRANDING */
+@media (max-width: 600px) {
+  .site-header .brand {
+    gap: 8px;
+  }
+
+  .site-header .brand-mark {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    font-size: 17px;
+    border-width: 2px;
+  }
+
+  .site-header .brand strong {
+    font-size: clamp(18px, 4.5vw, 25px);
+    white-space: normal;
+  }
+
+  .site-header .brand small {
+    font-size: 10px;
+  }
+}
