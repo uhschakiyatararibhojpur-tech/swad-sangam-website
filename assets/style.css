@@ -605,3 +605,82 @@ footer .brand small {
     transition: none !important;
   }
 }
+
+/* ELEGANT HINDI TYPOGRAPHY */
+body {
+  font-family: "Hind", sans-serif;
+}
+
+.site-header .brand strong {
+  font-family: "Hind", sans-serif;
+  font-size: clamp(25px, 2.2vw, 35px);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: #701426;
+}
+
+.site-header .brand small {
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #986b2b;
+}
+
+.hero-copy .eyebrow {
+  font-family: "Hind", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.hero-copy h1 {
+  font-family: "Hind", sans-serif;
+  font-size: clamp(44px, 5vw, 70px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.hero-copy h1 em {
+  font-family: "Yatra One", "Hind", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #bd8737;
+}
+
+.hero-sub {
+  font-family: "Hind", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.9;
+}
+
+.button,
+.site-header nav a,
+.hero-note,
+.benefits,
+.section-heading,
+.menu-grid {
+  font-family: "Hind", sans-serif;
+}
+
+@media (max-width: 600px) {
+  .site-header .brand strong {
+    font-size: 23px;
+  }
+
+  .site-header .brand small {
+    font-size: 12px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(37px, 10vw, 48px);
+    line-height: 1.5;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+}
